@@ -1,8 +1,8 @@
 <resources>
 
     <!-- Atlantica Design Theme -->
-    <style name="AtlanticaDesignTheme" parent="Theme.AppCompat">
-        <item name="someToken">#ec92cd</item>
+    <style name="AtlanticaDesignTheme">
+        <item name="someToken">#9295ec</item>
         <item name="colorPrimaryDark">#f19e9e</item>
         <item name="colorAccent">#a4b5e2</item>
     </style>
