@@ -2,9 +2,26 @@
 
     <!-- Atlantica Design Theme -->
     <style name="AtlanticaDesignTheme" parent="Theme.AppCompat">
-        <item name="someToken">#ec92cd</item>
-        <item name="colorPrimaryDark">#f19e9e</item>
-        <item name="colorAccent">#a4b5e2</item>
+
+        <!-- Spacing -->
+        <item name="verticalSpacingSmall">10dp</item>
+        <item name="horizontalSpacingMargin">#ec92cd</item>
+        <item name="horizontalSpacingSmall">#ec92cd</item>
+        <item name="horizontalSpacingMedium">#ec92cd</item>
+
+        <!-- Size -->
+        <item name="iconListSize">#ec92cd</item>
+
+        <!-- Color -->
+        <item name="mediumGrayColor">#ec92cd</item>
+
+        <!-- Enums -->
+        <item name="settingsTextAlignment">#ec92cd</item>
+
+        <!-- Misc -->
+        <!-- TODO figure out fonts -->
+        <!--<item name="projectFont">#ec92cd</item>-->
+
     </style>
 
 </resources>
