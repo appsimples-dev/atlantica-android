@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+        android:id="@+id/atl_settings_item_root"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="horizontal"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="?attr/horizontalSpacingMargin"
-        android:paddingRight="?attr/horizontalSpacingMargin"
-        android:paddingTop="?attr/verticalSpacingSmall"
-        android:paddingBottom="?attr/verticalSpacingSmall"
+        android:layout_height="match_parent"
         >
 
     <LinearLayout
@@ -17,11 +14,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginRight="?attr/horizontalSpacingMedium"
             tools:ignore="RtlHardcoded"
+            android:visibility="gone"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             >
 
-        <ImageView
+        <com.outsmart.atlanticadesign.Atoms.ATLIcon
                 android:id="@+id/atl_settings_item_icon"
                 android:layout_width="?attr/iconListSize"
                 android:layout_height="?attr/iconListSize"
@@ -30,8 +29,39 @@
 
     </LinearLayout>
 
-    <
+    <com.outsmart.atlanticadesign.Atoms.ATLSimpleLabel
+            android:id="@+id/atl_settings_item_label"
+            android:layout_toRightOf="@id/atl_settings_item_icon_container"
+            android:layout_toLeftOf="@id/atl_settings_item_switch_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            app:textColor="?attr/mediumGrayColor"
+            app:fontSize="?attr/listItemLabelFontSize"
+            app:textAlignment="?attr/settingsTextAlignment"
+            tools:ignore="RtlHardcoded"
+            />
 
+    <com.outsmart.atlanticadesign.Atoms.ATLSwitchButton
+            android:id="@+id/atl_settings_item_switch_button"
+            android:layout_toLeftOf="@id/atl_settings_right_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            tools:ignore="RtlHardcoded"
+            android:visibility="gone"
+            />
 
+    <com.outsmart.atlanticadesign.Atoms.ATLIcon
+            android:id="@+id/atl_settings_right_item_icon"
+            android:layout_width="?attr/iconListSize"
+            android:layout_height="?attr/iconListSize"
+            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            />
 
-</LinearLayout>
+</RelativeLayout>

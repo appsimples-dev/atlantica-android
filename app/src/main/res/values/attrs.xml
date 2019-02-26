@@ -10,6 +10,7 @@
 
     <!-- Size -->
     <attr name="iconListSize" format="dimension" />
+    <attr name="listItemLabelFontSize" format="dimension" />
 
     <!-- Color -->
     <attr name="mediumGrayColor" format="color" />

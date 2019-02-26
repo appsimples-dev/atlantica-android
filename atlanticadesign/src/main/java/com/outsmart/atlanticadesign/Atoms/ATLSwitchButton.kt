@@ -5,11 +5,5 @@ import android.util.AttributeSet
 import android.widget.Switch
 
 class ATLSwitchButton @JvmOverloads constructor(context: Context,
-                                                attributeSet: AttributeSet? = null,
-                                                defStyle: Int = 0) : Switch(context, attributeSet, defStyle) {
-
-    init {
-
-    }
-
-}
+                                                attributeSet: AttributeSet? = null
+) : Switch(context, attributeSet)

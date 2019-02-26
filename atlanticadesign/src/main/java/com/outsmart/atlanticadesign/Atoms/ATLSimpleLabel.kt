@@ -2,12 +2,17 @@ package com.outsmart.atlanticadesign.Atoms
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.TextView
 import com.outsmart.atlanticadesign.R
 
 class ATLSimpleLabel @JvmOverloads constructor(context: Context,
                                                attributeSet: AttributeSet? = null,
                                                defStyle: Int = 0) : TextView(context, attributeSet, defStyle) {
+
+    val TEXT_ALIGN_RIGHT = 0
+    val TEXT_ALIGN_LEFT = 1
+    val TEXT_ALIGN_CENTER = 2
 
     init {
         var textColor = 0
@@ -21,18 +26,29 @@ class ATLSimpleLabel @JvmOverloads constructor(context: Context,
 
             try {
                 textColor = getColor(R.styleable.ATLSimpleLabel_textColor, 0)
-                fontSize = getDimension(R.styleable.ATLSimpleLabel_fontSize, 0f)
-                textAlignment = getInteger(R.styleable.ATLSimpleLabel_textAlignment, 0)
-                backgroundColor = getColor(R.styleable.ATLSimpleLabel_backgroundColor, 0)
+                fontSize = getDimension(R.styleable.ATLSimpleLabel_fontSize, -1f)
+                textAlignment = getInteger(R.styleable.ATLSimpleLabel_textAlignment, -1)
+                backgroundColor = getColor(R.styleable.ATLSimpleLabel_backgroundColor, -1)
 
             } finally {
                 recycle()
             }
         }
-        this.setTextColor(textColor)
-        this.textSize = fontSize
-        this.textAlignment = textAlignment
-        this.setBackgroundColor(backgroundColor)
+        if (textColor != 0) this.setTextColor(textColor)
+        if (fontSize >= 0) this.setTextSize(fontSize)
+        if (backgroundColor >= 0) this.setBackgroundColor(backgroundColor)
+
+        setTextAlignmentATL(textAlignment)
+    }
+
+    fun setTextAlignmentATL(textAlignment: Int) {
+        if (textAlignment >= 0) {
+            when(textAlignment) {
+                0 -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+                1 -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+                2 -> this.textAlignment = View.TEXT_ALIGNMENT_CENTER
+            }
+        }
     }
 
 }
