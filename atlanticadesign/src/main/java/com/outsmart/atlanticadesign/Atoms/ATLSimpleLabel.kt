@@ -10,10 +10,6 @@ class ATLSimpleLabel @JvmOverloads constructor(context: Context,
                                                attributeSet: AttributeSet? = null,
                                                defStyle: Int = 0) : TextView(context, attributeSet, defStyle) {
 
-    val TEXT_ALIGN_RIGHT = 0
-    val TEXT_ALIGN_LEFT = 1
-    val TEXT_ALIGN_CENTER = 2
-
     init {
         var textColor = 0
         var fontSize = 0f
@@ -60,6 +56,6 @@ class ATLSimpleLabel @JvmOverloads constructor(context: Context,
     }
 
     enum class TextAlignment {
-        RIGHT, LEFT, CENTER
+        LEFT, RIGHT, CENTER // It is important that they are in the same order as the its attr definition
     }
 }

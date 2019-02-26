@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.ContentFrameLayout
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.outsmart.atlanticadesign.Atoms.ATLIcon
@@ -30,11 +31,15 @@ class ATLSettingsItem @JvmOverloads constructor(
     var id: String = ""
     private lateinit var style: Style
 
+    /* Views and Components */
     lateinit var label: ATLSimpleLabel
     lateinit var icon: ATLIcon
     lateinit var iconContainer: LinearLayout
     lateinit var rightIcon: ATLIcon
     lateinit var switch: ATLSwitchButton
+
+    /*  */
+    var styleTransformer: ((style: Style) -> Style)? = null
 
     init {
         View.inflate(getContext(), R.layout.molecule_atl_settings_item, this)
@@ -54,12 +59,15 @@ class ATLSettingsItem @JvmOverloads constructor(
         applyStyle()
     }
 
-    fun create(heightDp: Float): ATLSettingsItem {
+    fun create(height: Int = LayoutParams.WRAP_CONTENT, width: Int = LayoutParams.MATCH_PARENT): ATLSettingsItem { // TODO base class?
         try {
-            val rootView=
+            val rootView = // TODO accept fragments and scrollView
                 (context as Activity).findViewById<ContentFrameLayout>(android.R.id.content).getChildAt(0)
                         as LinearLayout
-            layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, convertDpToPixel(heightDp))
+            layoutParams = LinearLayout.LayoutParams(
+                if (width == LayoutParams.MATCH_PARENT) width else convertDpToPixel(width),
+                if (height == LayoutParams.WRAP_CONTENT) height else convertDpToPixel(height)
+            )
             this.layoutParams = layoutParams
             rootView.addView(this)
             this.requestLayout()
@@ -91,8 +99,12 @@ class ATLSettingsItem @JvmOverloads constructor(
             resolveDimenStyle(context, input, R.attr.iconListSize, R.styleable.ATLSettingsItem_rightIconWidth, 0),
             null,
             resolveColorStyle(context, input, R.attr.mediumGrayColor, R.styleable.ATLSettingsItem_labelFontColor, 0),
-            resolveEnumStyle(context, input, R.attr.textAlignment, R.styleable.ATLSettingsItem_textAlignment, 0)
+            ATLSimpleLabel.TextAlignment.values()
+                    [resolveEnumStyle(context, input, R.attr.textAlignment, R.styleable.ATLSettingsItem_textAlignment, 0)]
         )
+        // Apply initial style transformer if existent
+        style = this.styleTransformer?.invoke(style) ?: style
+        // TODO make extensible?
     }
 
     private fun loadInitialProps(input: TypedArray) {
@@ -106,7 +118,6 @@ class ATLSettingsItem @JvmOverloads constructor(
 
     private fun applyStyle() {
         setPadding(style.marginLeftSpacing, style.marginTopSpacing, style.marginRightSpacing, style.marginBottomSpacing)
-        setBackgroundColor(ContextCompat.getColor(context, R.color.ahahaha))
         icon.layoutParams.width = style.iconWidth
         icon.layoutParams.height = style.iconHeight
         rightIcon.layoutParams.width = style.rightIconWidth
@@ -121,6 +132,11 @@ class ATLSettingsItem @JvmOverloads constructor(
     /**
      * Prop setting methods
      */
+    fun setStyle(styleTransformer: (style: Style) -> Style): ATLSettingsItem  {
+        this.style = styleTransformer.invoke(style)
+        this.applyStyle()
+        return this
+    }
 
     fun setText(text: String): ATLSettingsItem {
         label.text = text
@@ -129,11 +145,6 @@ class ATLSettingsItem @JvmOverloads constructor(
 
     fun setText(resId: Int): ATLSettingsItem {
         label.setText(resId)
-        return this
-    }
-
-    fun setTextAlignment(textAlignment: ATLSimpleLabel.TextAlignment): ATLSettingsItem {
-        label.setTextAlignmentATL(textAlignment)
         return this
     }
 
@@ -217,7 +228,7 @@ class ATLSettingsItem @JvmOverloads constructor(
         var rightIconWidth: Int,
         var labelFont: Any?,
         var labelFontColor: Int,
-        var textAlignment: Int
+        var textAlignment: ATLSimpleLabel.TextAlignment
     )
 
     /**
