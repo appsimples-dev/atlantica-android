@@ -11,7 +11,7 @@
 
         <!-- Size -->
         <item name="iconListSize">30dp</item>
-        <item name="listItemLabelFontSize">8sp</item>
+        <item name="listItemLabelFontSize">6sp</item>
 
         <!-- Color -->
         <item name="mediumGrayColor">#6b6b6b</item>

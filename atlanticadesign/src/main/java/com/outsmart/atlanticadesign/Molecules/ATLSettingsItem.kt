@@ -1,8 +1,10 @@
 package com.outsmart.atlanticadesign.Molecules
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.ContentFrameLayout
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -10,11 +12,14 @@ import android.widget.RelativeLayout
 import com.outsmart.atlanticadesign.Atoms.ATLIcon
 import com.outsmart.atlanticadesign.Atoms.ATLSimpleLabel
 import com.outsmart.atlanticadesign.Atoms.ATLSwitchButton
+import com.outsmart.atlanticadesign.Helpers.convertDpToPixel
 import com.outsmart.atlanticadesign.Helpers.resolveColorStyle
 import com.outsmart.atlanticadesign.Helpers.resolveDimenStyle
 import com.outsmart.atlanticadesign.Helpers.resolveEnumStyle
 import com.outsmart.atlanticadesign.R
 import kotlinx.android.synthetic.main.molecule_atl_settings_item.view.*
+import java.lang.Exception
+import java.lang.IllegalStateException
 
 class ATLSettingsItem @JvmOverloads constructor(
     context: Context,
@@ -30,10 +35,6 @@ class ATLSettingsItem @JvmOverloads constructor(
     lateinit var iconContainer: LinearLayout
     lateinit var rightIcon: ATLIcon
     lateinit var switch: ATLSwitchButton
-
-    val RIGHT_COMPONENT_VARIANT_NONE = 0
-    val RIGHT_COMPONENT_VARIANT_ICON = 1
-    val RIGHT_COMPONENT_VARIANT_SWITCH = 2
 
     init {
         View.inflate(getContext(), R.layout.molecule_atl_settings_item, this)
@@ -51,6 +52,21 @@ class ATLSettingsItem @JvmOverloads constructor(
         }
 
         applyStyle()
+    }
+
+    fun create(heightDp: Float): ATLSettingsItem {
+        try {
+            val rootView=
+                (context as Activity).findViewById<ContentFrameLayout>(android.R.id.content).getChildAt(0)
+                        as LinearLayout
+            layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, convertDpToPixel(heightDp))
+            this.layoutParams = layoutParams
+            rootView.addView(this)
+            this.requestLayout()
+        } catch (e: Exception) {
+            throw IllegalStateException("Your activity must have a LinearLayout as its root view for ATL Components to mount")
+        }
+        return this
     }
 
     private fun initializeViews() {
@@ -106,47 +122,68 @@ class ATLSettingsItem @JvmOverloads constructor(
      * Prop setting methods
      */
 
-    fun setText(text: String) {
+    fun setText(text: String): ATLSettingsItem {
         label.text = text
+        return this
     }
 
-    fun setText(resId: Int) {
+    fun setText(resId: Int): ATLSettingsItem {
         label.setText(resId)
+        return this
     }
 
-    fun setIcon(resId: Int?) {
+    fun setTextAlignment(textAlignment: ATLSimpleLabel.TextAlignment): ATLSettingsItem {
+        label.setTextAlignmentATL(textAlignment)
+        return this
+    }
+
+    fun setIcon(resId: Int?): ATLSettingsItem {
         if (resId != null && resId >= 0) {
             icon.setImageResource(resId)
             iconContainer.visibility = View.VISIBLE
         } else {
             iconContainer.visibility = View.GONE
         }
+        return this
     }
 
-    fun setRightIcon(resId: Int?) {
+    fun setRightIcon(resId: Int?): ATLSettingsItem {
         if (resId != null && resId >= 0) {
             rightIcon.setImageResource(resId)
             rightIcon.visibility = View.VISIBLE
         } else {
             rightIcon.visibility = View.GONE
         }
+        return this
     }
 
-    fun setRightComponentVariant(variant: Int) {
-        if (variant < 0) return
+    private fun setRightComponentVariant(variant: Int): ATLSettingsItem {
+        if (variant < 0) return this
         when(variant) {
-            RIGHT_COMPONENT_VARIANT_NONE -> setVariantNone()
-            RIGHT_COMPONENT_VARIANT_ICON -> setVariantIcon()
-            RIGHT_COMPONENT_VARIANT_SWITCH -> setVariantSwitch()
+            RightComponentVariant.NONE.ordinal -> setVariantNone()
+            RightComponentVariant.ICON.ordinal -> setVariantIcon()
+            RightComponentVariant.SWITCH.ordinal -> setVariantSwitch()
         }
+        return this
     }
 
-    fun setOnToggle(callback: (checked: Boolean, id: String) -> Unit) {
+    fun setRightComponentVariant(variant: RightComponentVariant): ATLSettingsItem {
+        when(variant) {
+            RightComponentVariant.NONE -> setVariantNone()
+            RightComponentVariant.ICON -> setVariantIcon()
+            RightComponentVariant.SWITCH -> setVariantSwitch()
+        }
+        return this
+    }
+
+    fun setOnToggle(callback: (checked: Boolean, id: String) -> Unit): ATLSettingsItem {
         switch.setOnCheckedChangeListener { _, isChecked -> callback(isChecked, id) }
+        return this
     }
 
-    fun setOnSelectItem(callback: (id: String) -> Unit) {
+    fun setOnSelectItem(callback: (id: String) -> Unit): ATLSettingsItem {
         this.setOnClickListener { callback(id) }
+        return this
     }
 
     private fun setVariantNone() {
@@ -182,4 +219,13 @@ class ATLSettingsItem @JvmOverloads constructor(
         var labelFontColor: Int,
         var textAlignment: Int
     )
+
+    /**
+     * Right Component Variant
+     */
+    enum class RightComponentVariant {
+        NONE,
+        ICON,
+        SWITCH
+    }
 }

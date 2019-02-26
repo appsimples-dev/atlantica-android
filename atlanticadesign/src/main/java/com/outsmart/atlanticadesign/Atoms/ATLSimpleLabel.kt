@@ -51,4 +51,15 @@ class ATLSimpleLabel @JvmOverloads constructor(context: Context,
         }
     }
 
+    fun setTextAlignmentATL(textAlignment: TextAlignment) {
+        when(textAlignment) {
+            TextAlignment.LEFT -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+            TextAlignment.RIGHT -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+            TextAlignment.CENTER -> this.textAlignment = View.TEXT_ALIGNMENT_CENTER
+        }
+    }
+
+    enum class TextAlignment {
+        RIGHT, LEFT, CENTER
+    }
 }
