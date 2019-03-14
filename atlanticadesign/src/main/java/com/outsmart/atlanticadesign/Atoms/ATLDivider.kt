@@ -7,15 +7,17 @@ import android.support.v7.widget.ContentFrameLayout
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import com.outsmart.atlanticadesign.Helpers.Resolver
 import com.outsmart.atlanticadesign.Helpers.convertDpToPixel
-import com.outsmart.atlanticadesign.Helpers.resolveColorStyle
 import com.outsmart.atlanticadesign.R
 
-class ATLDivider @JvmOverloads constructor(context: Context,
-                                           attributeSet: AttributeSet? = null,
-                                           defStyle: Int = 0) : View(context, attributeSet, defStyle) {
+class ATLDivider @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyle: Int = 0
+) : View(context, attributeSet, defStyle) {
 
-    private lateinit var style: Style
+    private var style: Style = Style()
 
     init {
         context.theme.obtainStyledAttributes(
@@ -29,10 +31,12 @@ class ATLDivider @JvmOverloads constructor(context: Context,
         applyStyle()
     }
 
-    fun loadInitialStyle(input: TypedArray) {
-        style = Style(
-            resolveColorStyle(context, input, R.attr.mediumGrayColor, 0, 0)
-        )
+    private fun loadInitialStyle(input: TypedArray) {
+        with(Resolver(context, input)) {
+            style.apply {
+                getResolvedColorStyle(R.attr.mediumGrayColor, 0, 0)
+            }
+        }
     }
 
     private fun applyStyle() {
@@ -57,6 +61,6 @@ class ATLDivider @JvmOverloads constructor(context: Context,
     }
 
     class Style(
-        var color: Int
+        var color: Int = 0
     )
 }

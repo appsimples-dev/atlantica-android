@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.outsmart.atlanticadesign.Atoms.ATLDivider
-import com.outsmart.atlanticadesign.Atoms.ATLSimpleLabel
 import com.outsmart.atlanticadesign.Molecules.ATLSettingsItem
+import com.outsmart.atlanticadesign.enums.TextAlignment
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 it.apply {
                     it.marginLeftSpacing = 100
                     it.marginRightSpacing = 100
-                    it.textAlignment = ATLSimpleLabel.TextAlignment.CENTER
+                    it.textAlignment = TextAlignment.CENTER
                 }
             }
             .setOnToggle { id, selected ->

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        android:id="@+id/atl_settings_item_root"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/atl_settings_item_root"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
     <LinearLayout
             android:id="@+id/atl_settings_item_icon_container"
@@ -17,15 +16,13 @@
             tools:ignore="RtlHardcoded"
             android:visibility="gone"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            >
+            android:layout_centerVertical="true">
 
         <com.outsmart.atlanticadesign.Atoms.ATLIcon
                 android:id="@+id/atl_settings_item_icon"
                 android:layout_width="?attr/iconListSize"
                 android:layout_height="?attr/iconListSize"
-                android:layout_gravity="center"
-                />
+                android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -40,8 +37,7 @@
             app:textColor="?attr/mediumGrayColor"
             app:fontSize="?attr/listItemLabelFontSize"
             app:textAlignment="?attr/settingsTextAlignment"
-            tools:ignore="RtlHardcoded"
-            />
+            tools:ignore="RtlHardcoded"/>
 
     <com.outsmart.atlanticadesign.Atoms.ATLSwitchButton
             android:id="@+id/atl_settings_item_switch_button"
@@ -51,8 +47,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             tools:ignore="RtlHardcoded"
-            android:visibility="gone"
-            />
+            android:visibility="gone"/>
 
     <com.outsmart.atlanticadesign.Atoms.ATLIcon
             android:id="@+id/atl_settings_right_item_icon"
@@ -61,7 +56,6 @@
             android:layout_gravity="center"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:visibility="gone"
-            />
+            android:visibility="gone"/>
 
 </RelativeLayout>

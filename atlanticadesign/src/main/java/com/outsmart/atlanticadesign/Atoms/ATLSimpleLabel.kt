@@ -2,13 +2,18 @@ package com.outsmart.atlanticadesign.Atoms
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.TextView
 import com.outsmart.atlanticadesign.R
+import com.outsmart.atlanticadesign.enums.TextAlignment
+import com.outsmart.atlanticadesign.extensions.alignTextCenter
+import com.outsmart.atlanticadesign.extensions.alignTextLeft
+import com.outsmart.atlanticadesign.extensions.alignTextRight
 
-class ATLSimpleLabel @JvmOverloads constructor(context: Context,
-                                               attributeSet: AttributeSet? = null,
-                                               defStyle: Int = 0) : TextView(context, attributeSet, defStyle) {
+class ATLSimpleLabel @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyle: Int = 0
+) : TextView(context, attributeSet, defStyle) {
 
     init {
         var textColor = 0
@@ -18,7 +23,8 @@ class ATLSimpleLabel @JvmOverloads constructor(context: Context,
         context.theme.obtainStyledAttributes(
             attributeSet,
             R.styleable.ATLSimpleLabel,
-            0, 0).apply {
+            0, 0
+        ).apply {
 
             try {
                 textColor = getColor(R.styleable.ATLSimpleLabel_textColor, 0)
@@ -39,23 +45,19 @@ class ATLSimpleLabel @JvmOverloads constructor(context: Context,
 
     fun setTextAlignmentATL(textAlignment: Int) {
         if (textAlignment >= 0) {
-            when(textAlignment) {
-                0 -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-                1 -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_END
-                2 -> this.textAlignment = View.TEXT_ALIGNMENT_CENTER
+            when (textAlignment) {
+                TextAlignment.LEFT.ordinal -> alignTextLeft()
+                TextAlignment.RIGHT.ordinal -> alignTextRight()
+                TextAlignment.CENTER.ordinal -> alignTextCenter()
             }
         }
     }
 
     fun setTextAlignmentATL(textAlignment: TextAlignment) {
-        when(textAlignment) {
-            TextAlignment.LEFT -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-            TextAlignment.RIGHT -> this.textAlignment = View.TEXT_ALIGNMENT_VIEW_END
-            TextAlignment.CENTER -> this.textAlignment = View.TEXT_ALIGNMENT_CENTER
+        when (textAlignment) {
+            TextAlignment.LEFT -> alignTextLeft()
+            TextAlignment.RIGHT -> alignTextRight()
+            TextAlignment.CENTER -> alignTextCenter()
         }
-    }
-
-    enum class TextAlignment {
-        LEFT, RIGHT, CENTER // It is important that they are in the same order as the its attr definition
     }
 }
