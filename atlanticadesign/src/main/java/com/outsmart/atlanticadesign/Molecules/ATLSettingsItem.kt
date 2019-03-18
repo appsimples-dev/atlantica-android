@@ -3,7 +3,7 @@ package com.outsmart.atlanticadesign.Molecules
 import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
-import android.support.v7.widget.ContentFrameLayout
+import androidx.appcompat.widget.ContentFrameLayout
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -279,8 +279,8 @@ class ATLSettingsItem @JvmOverloads constructor(
     }
 
     private fun setVariantSwitch() {
-        switch.hide()
-        rightIcon.show()
+        switch.show()
+        rightIcon.hide()
     }
 
     /**

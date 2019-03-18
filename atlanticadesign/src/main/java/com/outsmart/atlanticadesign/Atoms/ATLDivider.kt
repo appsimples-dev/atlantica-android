@@ -3,7 +3,7 @@ package com.outsmart.atlanticadesign.Atoms
 import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
-import android.support.v7.widget.ContentFrameLayout
+import androidx.appcompat.widget.ContentFrameLayout
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -34,7 +34,7 @@ class ATLDivider @JvmOverloads constructor(
     private fun loadInitialStyle(input: TypedArray) {
         with(Resolver(context, input)) {
             style.apply {
-                getResolvedColorStyle(R.attr.mediumGrayColor, 0, 0)
+                color = getResolvedColorStyle(R.attr.mediumGrayColor, 0, 0)
             }
         }
     }
