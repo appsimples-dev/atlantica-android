@@ -8,17 +8,12 @@
         tools:context=".MainActivity"
         android:orientation="vertical">
 
-    <com.outsmart.atlanticadesign.Molecules.ATLSettingsItem
+    <com.outsmart.atlanticadesign.Molecules.ATLImageLogo
+            android:background="#0fc3ac"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="800dp"
-            app:text="dasddsasd"
-            app:rightComponentVariant="toggle"
-            app:icon="@drawable/ic_launcher_background"
-            app:textAlignment="center"/>
-
-    <com.outsmart.atlanticadesign.Atoms.ATLIcon
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:source="@drawable/ic_launcher_background"/>
+            android:layout_height="280dp"
+            app:imageLogo="@drawable/logo_sample"
+    />
 
 </LinearLayout>

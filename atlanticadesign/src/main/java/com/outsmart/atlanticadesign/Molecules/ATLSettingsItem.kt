@@ -16,7 +16,7 @@ import com.outsmart.atlanticadesign.R
 import com.outsmart.atlanticadesign.enums.TextAlignment
 import com.outsmart.atlanticadesign.extensions.hide
 import com.outsmart.atlanticadesign.extensions.show
-import kotlinx.android.synthetic.main.molecule_atl_settings_item.view.*
+import kotlinx.android.synthetic.main.molecule_settings_item.view.*
 import java.lang.Exception
 import java.lang.IllegalStateException
 
@@ -58,7 +58,7 @@ class ATLSettingsItem @JvmOverloads constructor(
     }
 
     private fun inflateView() {
-        View.inflate(context, R.layout.molecule_atl_settings_item, this)
+        View.inflate(context, R.layout.molecule_settings_item, this)
     }
 
     fun create(
@@ -87,7 +87,8 @@ class ATLSettingsItem @JvmOverloads constructor(
     }
 
     private fun loadInitialStyle(input: TypedArray) {
-        with(Resolver(context, input)) {
+        val resolver = Resolver(context, input)
+        with(resolver) {
             style.apply {
                 marginLeftSpacing = getResolvedDimenStyle(
                     R.attr.horizontalSpacingMargin,
@@ -198,7 +199,6 @@ class ATLSettingsItem @JvmOverloads constructor(
             )
         }
     }
-
 
     /**
      * Prop setting methods
