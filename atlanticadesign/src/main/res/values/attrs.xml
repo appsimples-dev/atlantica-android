@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="someToken" format="color" />
+    <attr name="someToken" format="color"/>
 
     <!-- Spacing -->
-    <attr name="verticalSpacingSmall" format="dimension" />
-    <attr name="horizontalSpacingMargin" format="dimension" />
-    <attr name="horizontalSpacingSmall" format="dimension" />
-    <attr name="horizontalSpacingMedium" format="dimension" />
+    <attr name="verticalSpacingSmall" format="dimension"/>
+    <attr name="horizontalSpacingMargin" format="dimension"/>
+    <attr name="horizontalSpacingSmall" format="dimension"/>
+    <attr name="horizontalSpacingMedium" format="dimension"/>
+    <attr name="horizontalSpacingLarge" format="dimension"/>
 
     <!-- Size -->
-    <attr name="iconListSize" format="dimension" />
-    <attr name="listItemLabelFontSize" format="dimension" />
+    <attr name="iconListSize" format="dimension"/>
+    <attr name="listItemLabelFontSize" format="dimension"/>
+    <attr name="sizeImageLogo" format="dimension"/>
 
     <!-- Color -->
-    <attr name="mediumGrayColor" format="color" />
+    <attr name="mediumGrayColor" format="color"/>
 
     <!-- Enums -->
     <attr name="settingsTextAlignment" format="enum">
