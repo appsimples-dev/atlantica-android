@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Atlantica Design Theme -->
-    <style name="AtlanticaDesignTheme" parent="Theme.AppCompat.Light">
+    <style name="AtlanticaDesignTheme" parent="Theme.AppCompat">
 
         <!-- Spacing -->
         <item name="verticalSpacingSmall">10dp</item>
@@ -10,14 +10,14 @@
         <item name="horizontalSpacingMedium">10dp</item>
 
         <!-- Size -->
-        <item name="iconListSize">30dp</item>
-        <item name="listItemLabelFontSize">6sp</item>
+        <item name="iconListSize">10dp</item>
+        <item name="listItemLabelFontSize">12sp</item>
 
         <!-- Color -->
-        <item name="mediumGrayColor">#6b6b6b</item>
+        <item name="mediumGrayColor">#ec92cd</item>
 
         <!-- Enums -->
-        <item name="settingsTextAlignment">left</item>
+        <item name="settingsTextAlignment">center</item>
 
         <!-- Misc -->
         <!-- TODO figure out fonts -->
