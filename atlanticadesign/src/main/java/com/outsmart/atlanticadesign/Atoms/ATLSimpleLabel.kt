@@ -1,6 +1,7 @@
 package com.outsmart.atlanticadesign.Atoms
 
 import android.content.Context
+import android.text.InputType
 import android.util.AttributeSet
 import android.widget.TextView
 import com.outsmart.atlanticadesign.R
@@ -19,7 +20,6 @@ class ATLSimpleLabel @JvmOverloads constructor(
         var textColor = 0
         var fontSize = 0f
         var textAlignment = 0
-        var backgroundColor = 0
         context.theme.obtainStyledAttributes(
             attributeSet,
             R.styleable.ATLSimpleLabel,
@@ -29,16 +29,18 @@ class ATLSimpleLabel @JvmOverloads constructor(
             try {
                 textColor = getColor(R.styleable.ATLSimpleLabel_textColor, 0)
                 fontSize = getDimension(R.styleable.ATLSimpleLabel_fontSize, -1f)
-                textAlignment = getInteger(R.styleable.ATLSimpleLabel_textAlignment, -1)
-                backgroundColor = getColor(R.styleable.ATLSimpleLabel_backgroundColor, -1)
+                textAlignment = getInteger(R.styleable.ATLSimpleLabel_labelTextAlignment, -1)
 
             } finally {
                 recycle()
             }
         }
-        if (textColor != 0) this.setTextColor(textColor)
-        if (fontSize >= 0) this.setTextSize(fontSize)
-        if (backgroundColor >= 0) this.setBackgroundColor(backgroundColor)
+        if (textColor != 0) {
+            this.setTextColor(textColor)
+        }
+        if (fontSize >= 0) {
+            this.textSize = fontSize
+        }
 
         setTextAlignmentATL(textAlignment)
     }

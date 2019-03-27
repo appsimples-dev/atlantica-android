@@ -22,7 +22,7 @@ class Resolver(
         return defValue
     }
 
-    fun getResolvedColorStyle(themeAttrId: Int, viewAttrId: Int, defValue: Int): Int {
+    fun getResolvedColorStyle(themeAttrId: Int, viewAttrId: Int, defValue: Int = Constants.RESOURCE_VALUE_UNAVAILABLE): Int {
         val hasFromInput = input.hasValue(viewAttrId)
         if (hasFromInput) {
             return input.getColor(viewAttrId, defValue)
@@ -48,7 +48,7 @@ class Resolver(
         return defValue
     }
 
-    fun getResolvedEnumStyle(themeAttrId: Int, viewAttrId: Int, defValue: Int): Int {
+    fun getResolvedEnumStyle(themeAttrId: Int, viewAttrId: Int, defValue: Int = Constants.ENUM_DEFAULT_VALUE): Int {
         val hasFromInput = input.hasValue(viewAttrId)
         if (hasFromInput) {
             return input.getInteger(viewAttrId, defValue)

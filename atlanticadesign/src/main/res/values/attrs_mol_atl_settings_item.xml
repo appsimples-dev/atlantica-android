@@ -4,23 +4,22 @@
         <!-- Style Props -->
         <attr name="marginLeftSpacing"/>
         <attr name="marginRightSpacing"/>
-        <attr name="marginTopSpacing" format="dimension"/>
-        <attr name="marginBottomSpacing" format="dimension"/>
+        <attr name="labelFontFamily"/>
+        <attr name="verticalSpacing"/>
+        <attr name="labelFontColor"/>
         <attr name="iconHeight" format="dimension"/>
         <attr name="iconWidth" format="dimension"/>
         <attr name="iconLabelSpacing" format="dimension"/>
         <attr name="labelSwitchSpacing" format="dimension"/>
         <attr name="rightIconHeight" format="dimension"/>
         <attr name="rightIconWidth" format="dimension"/>
-        <attr name="labelFont" format="reference"/>
-        <attr name="labelFontColor" format="color"/>
-        <attr name="textAlignment"/>
 
         <!-- State Props -->
+        <attr name="text"/>
         <attr name="icon" format="reference"/>
         <attr name="rightIcon" format="reference"/>
-        <attr name="text" format="string"/>
         <attr name="isSwitchActive" format="boolean"/>
+        <attr name="labelTextAlignment"/>
         <attr name="rightComponentVariant" format="enum">
             <enum name="none" value="0"/>
             <enum name="icon" value="1"/>

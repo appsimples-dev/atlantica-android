@@ -1,4 +1,4 @@
-package com.outsmart.atlanticadesign.Atoms
+package com.outsmart.atlanticadesign.Molecules
 
 import android.app.Activity
 import android.content.Context
@@ -17,7 +17,8 @@ class ATLDivider @JvmOverloads constructor(
     defStyle: Int = 0
 ) : View(context, attributeSet, defStyle) {
 
-    private var style: Style = Style()
+    private var style: Style =
+        Style()
 
     init {
         context.theme.obtainStyledAttributes(

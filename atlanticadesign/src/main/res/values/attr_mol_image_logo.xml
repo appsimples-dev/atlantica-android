@@ -3,7 +3,7 @@
     <declare-styleable name="ATLImageLogo">
         <attr name="marginLeftSpacing"/>
         <attr name="marginRightSpacing"/>
-        <attr name="verticalSpacing" format="dimension"/>
+        <attr name="verticalSpacing"/>
         <attr name="moleculeHeight" format="dimension"/>
         <attr name="imageLogo" format="reference"/>
     </declare-styleable>

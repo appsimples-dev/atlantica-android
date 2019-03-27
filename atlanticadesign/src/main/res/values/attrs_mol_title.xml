@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ATLTitle">
+
+        <!--Style Props-->
+        <attr name="labelFontFamily"/>
+        <attr name="labelFontColor"/>
+        <attr name="labelFontSize"/>
+        <attr name="labelFontWeight"/>
+        <attr name="labelTextAlignment"/>
+        <attr name="labelTextCase"/>
+        <attr name="marginRightSpacing"/>
+        <attr name="marginLeftSpacing"/>
+        <attr name="verticalSpacing"/>
+
+        <!--State Props-->
+        <attr name="text"/>
+    </declare-styleable>
+
+</resources>

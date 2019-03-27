@@ -18,7 +18,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true">
 
-        <com.outsmart.atlanticadesign.Atoms.ATLIcon
+        <com.outsmart.atlanticadesign.Atoms.ATMIcon
                 android:id="@+id/atl_settings_item_icon"
                 android:layout_width="?attr/iconListSize"
                 android:layout_height="?attr/iconListSize"
@@ -36,10 +36,9 @@
             android:gravity="center_vertical"
             app:textColor="?attr/mediumGrayColor"
             app:fontSize="?attr/listItemLabelFontSize"
-            app:textAlignment="?attr/settingsTextAlignment"
             tools:ignore="RtlHardcoded"/>
 
-    <com.outsmart.atlanticadesign.Atoms.ATLSwitchButton
+    <com.outsmart.atlanticadesign.Atoms.ATMSwitchButton
             android:id="@+id/atl_settings_item_switch_button"
             android:layout_toLeftOf="@id/atl_settings_right_item_icon"
             android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
             tools:ignore="RtlHardcoded"
             android:visibility="gone"/>
 
-    <com.outsmart.atlanticadesign.Atoms.ATLIcon
+    <com.outsmart.atlanticadesign.Atoms.ATMIcon
             android:id="@+id/atl_settings_right_item_icon"
             android:layout_width="?attr/iconListSize"
             android:layout_height="?attr/iconListSize"

@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="someToken" format="color"/>
 
-    <!-- Spacing -->
+    <!-- Spacing  Tokens-->
     <attr name="verticalSpacingSmall" format="dimension"/>
     <attr name="horizontalSpacingMargin" format="dimension"/>
     <attr name="horizontalSpacingSmall" format="dimension"/>
     <attr name="horizontalSpacingMedium" format="dimension"/>
     <attr name="horizontalSpacingLarge" format="dimension"/>
 
+    <!-- Spacing  Props-->
+    <attr name="marginLeftSpacing" format="dimension"/>
+    <attr name="marginRightSpacing" format="dimension"/>
+    <attr name="verticalSpacing" format="dimension"/>
+
     <!-- Size -->
     <attr name="iconListSize" format="dimension"/>
     <attr name="listItemLabelFontSize" format="dimension"/>
     <attr name="sizeImageLogo" format="dimension"/>
+    <attr name="fontSize" format="dimension"/>
+    <attr name="fontSizeHighlight" format="dimension"/>
 
-    <!-- Color -->
-    <attr name="mediumGrayColor" format="color"/>
-
-    <!-- Enums -->
-    <attr name="settingsTextAlignment" format="enum">
-        <enum name="left" value="0"/>
-        <enum name="right" value="1"/>
-        <enum name="center" value="2"/>
-    </attr>
-
-    <!-- Misc -->
-    <!-- TODO figure out fonts -->
-    <!--<attr name="projectFont" format="reference" />-->
 </resources>

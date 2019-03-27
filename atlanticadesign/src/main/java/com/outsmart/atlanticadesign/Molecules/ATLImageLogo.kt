@@ -42,7 +42,7 @@ class ATLImageLogo @JvmOverloads constructor(
         typedArray.apply {
             val resourceId = getResourceId(
                 R.styleable.ATLImageLogo_imageLogo,
-                Constants.RESOURCE_DEFAULT_VALUE
+                Constants.RESOURCE_VALUE_UNAVAILABLE
             )
             setImageLogo(resourceId)
         }
