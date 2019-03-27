@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--TOKENS-->
+    <attr name="textAlignmentBody" format="enum">
+        <enum name="left" value="0"/>
+        <enum name="center" value="1"/>
+        <enum name="right" value="2"/>
+    </attr>
+
+    <attr name="textAlignmentTitle" format="enum">
+        <enum name="left" value="0"/>
+        <enum name="center" value="1"/>
+        <enum name="right" value="2"/>
+    </attr>
+
+    <attr name="textCaseHighlight" format="enum">
+        <enum name="Upperlow" value="0"/>
+        <enum name="Uppercase" value="1"/>
+        <enum name="Lowercase" value="2"/>
+    </attr>
+
+    <attr name="fontWeightStrong" format="enum">
+        <enum name="regular" value="0"/>
+        <enum name="light" value="1"/>
+        <enum name="bold" value="2"/>
+    </attr>
+
+    <!--PROPS-->
+    <attr name="labelTextAlignment" format="enum">
+        <enum name="left" value="0"/>
+        <enum name="center" value="1"/>
+        <enum name="right" value="2"/>
+    </attr>
+
+    <attr name="labelFontWeight" format="enum">
+        <enum name="regular" value="0"/>
+        <enum name="light" value="1"/>
+        <enum name="bold" value="2"/>
+    </attr>
+
+</resources>

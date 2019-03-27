@@ -8,12 +8,17 @@
         tools:context=".MainActivity"
         android:orientation="vertical">
 
-    <com.outsmart.atlanticadesign.Molecules.ATLImageLogo
-            android:background="#0fc3ac"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            app:imageLogo="@drawable/logo_sample"
-    />
+    <com.outsmart.atlanticadesign.Molecules.ATLTitle
+            app:text="Titulo com atributos setados pelo tema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <com.outsmart.atlanticadesign.Molecules.ATLTitle
+            app:text="Titulo com atributos setados no xml (sobrescrevem os do style)"
+            app:labelFontSize="5sp"
+            app:labelTextAlignment="right"
+            app:labelFontColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>

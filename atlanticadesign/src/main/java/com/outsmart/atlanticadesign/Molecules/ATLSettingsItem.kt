@@ -8,9 +8,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import com.outsmart.atlanticadesign.Atoms.ATLIcon
+import com.outsmart.atlanticadesign.Atoms.ATMIcon
 import com.outsmart.atlanticadesign.Atoms.ATLSimpleLabel
-import com.outsmart.atlanticadesign.Atoms.ATLSwitchButton
+import com.outsmart.atlanticadesign.Atoms.ATMSwitchButton
 import com.outsmart.atlanticadesign.Helpers.*
 import com.outsmart.atlanticadesign.R
 import com.outsmart.atlanticadesign.enums.TextAlignment
@@ -31,10 +31,10 @@ class ATLSettingsItem @JvmOverloads constructor(
 
     /* Views and Components */
     private val label: ATLSimpleLabel by lazy { atl_settings_item_label }
-    private val icon: ATLIcon by lazy { atl_settings_item_icon }
+    private val icon: ATMIcon by lazy { atl_settings_item_icon }
     private val iconContainer: LinearLayout by lazy { atl_settings_item_icon_container }
-    private val rightIcon: ATLIcon by lazy { atl_settings_right_item_icon }
-    private val switch: ATLSwitchButton by lazy { atl_settings_item_switch_button }
+    private val switch: ATMSwitchButton by lazy { atl_settings_item_switch_button }
+    private val rightIcon: ATMIcon by lazy { atl_settings_right_item_icon }
 
     /*  */
     var styleTransformer: ((style: Style) -> Style)? = null
@@ -100,11 +100,11 @@ class ATLSettingsItem @JvmOverloads constructor(
                 )
                 marginTopSpacing = getResolvedDimenStyle(
                     R.attr.verticalSpacingSmall,
-                    R.styleable.ATLSettingsItem_marginTopSpacing
+                    R.styleable.ATLSettingsItem_verticalSpacing
                 )
                 marginBottomSpacing = getResolvedDimenStyle(
                     R.attr.verticalSpacingSmall,
-                    R.styleable.ATLSettingsItem_marginBottomSpacing
+                    R.styleable.ATLSettingsItem_verticalSpacing
                 )
                 iconHeight = getResolvedDimenStyle(
                     R.attr.iconListSize,
@@ -132,12 +132,11 @@ class ATLSettingsItem @JvmOverloads constructor(
                 )
                 labelFontColor = getResolvedColorStyle(
                     R.attr.mediumGrayColor,
-                    R.styleable.ATLSettingsItem_labelFontColor,
-                    0
+                    R.styleable.ATLSettingsItem_labelFontColor
                 )
                 textAlignment = TextAlignment.values()[getResolvedEnumStyle(
-                    R.attr.textAlignment,
-                    R.styleable.ATLSettingsItem_textAlignment,
+                    R.attr.textAlignmentBody,
+                    R.styleable.ATLSettingsItem_labelTextAlignment,
                     0
                 )]
             }
@@ -149,20 +148,29 @@ class ATLSettingsItem @JvmOverloads constructor(
 
     private fun loadInitialProps(input: TypedArray) {
         input.apply {
-            setText(getString(R.styleable.ATLSettingsItem_text) ?: "")
+            setText(
+                getString(
+                    R.styleable.ATLSettingsItem_text
+                ) ?: ""
+            )
             setIcon(
                 getResourceId(
                     R.styleable.ATLSettingsItem_icon,
-                    Constants.RESOURCE_DEFAULT_VALUE
+                    Constants.RESOURCE_VALUE_UNAVAILABLE
                 )
             )
             setRightComponentVariant(
                 getInteger(
                     R.styleable.ATLSettingsItem_rightComponentVariant,
-                    Constants.RESOURCE_DEFAULT_VALUE
+                    Constants.RESOURCE_VALUE_UNAVAILABLE
                 )
             )
-            setRightIcon(getResourceId(R.styleable.ATLSettingsItem_rightIcon, Constants.RESOURCE_DEFAULT_VALUE))
+            setRightIcon(
+                getResourceId(
+                    R.styleable.ATLSettingsItem_rightIcon,
+                    Constants.RESOURCE_VALUE_UNAVAILABLE
+                )
+            )
         }
     }
 
@@ -172,10 +180,14 @@ class ATLSettingsItem @JvmOverloads constructor(
         setLabelStyle()
     }
 
-    private fun setLabelStyle() {
+    private fun setViewPadding() {
         with(style) {
-            label.setTextColor(labelFontColor)
-            label.setTextAlignmentATL(textAlignment)
+            setPadding(
+                marginLeftSpacing,
+                marginTopSpacing,
+                marginRightSpacing,
+                marginBottomSpacing
+            )
         }
     }
 
@@ -189,14 +201,10 @@ class ATLSettingsItem @JvmOverloads constructor(
         }
     }
 
-    private fun setViewPadding() {
+    private fun setLabelStyle() {
         with(style) {
-            setPadding(
-                marginLeftSpacing,
-                marginTopSpacing,
-                marginRightSpacing,
-                marginBottomSpacing
-            )
+            label.setTextColor(labelFontColor)
+            label.setTextAlignmentATL(textAlignment)
         }
     }
 
